@@ -1,0 +1,29 @@
+<?xml version='1.0'?>
+
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:macro name="camera" params="name">
+	<link name="${name}">
+	<visual>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0.05 0.05 0.05" />
+		</geometry>
+	</visual>
+	<collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0.05 0.05 0.05" />
+		</geometry>
+	</collision>
+	<xacro:default_inertial mass="0.1" />
+	</link>
+    <joint type="fixed" name="${name}_hinge">
+			<origin xyz="0.2 0 0" rpy="0 0 0"/>
+			<child link="${name}"/>
+			<parent link="chassis"/>
+			<axis xyz="0 1 0" rpy="0 0 0"/>
+			
+	</joint>
+	</xacro:macro>
+
+</robot>

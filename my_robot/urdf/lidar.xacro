@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:macro name="lidar" params="name">
+	<link name="${name}">
+	<visual>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://my_robot/meshes/hokuyo.dae"/>
+        </geometry>
+	</visual>
+	<collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+			<box size="0.1 0.1 0.1" />
+		</geometry>
+	</collision>
+	<xacro:default_inertial mass="0.1" />
+	</link>
+    <joint type="fixed" name="${name}_joint">
+			<origin xyz="0.15 0 0.1" rpy="0 0 0"/>
+			<child link="${name}"/>
+			<parent link="chassis"/>
+			<axis xyz="0 1 0" rpy="0 0 0"/>
+	</joint>
+	</xacro:macro>
+
+</robot>
